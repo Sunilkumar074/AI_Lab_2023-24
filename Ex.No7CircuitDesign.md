@@ -1,17 +1,17 @@
-# Ex.No: 7  Logic Programming –  Logic Circuit Design
-### DATE:  20/09/2025                                                                         
+# Ex.No: 8  Logic Programming –  Medical Diagnosis Expert System
+### DATE:   20/09/2025                                                                        
 ### REGISTER NUMBER : 212223040213
-### AIM:
-To write a logic program to design a circuit like half adder and half subtractor.
+### AIM: 
+Write a Prolog program to build a medical Diagnosis Expert System.
 ###  Algorithm:
-1. Start the Program
-2. Design a AND gate logic if both inputs are 1 then output is 1.
-3. Design a OR gate logic if any one of input is 1 then output is 1.
-4. Design a XOR gate logic if both inputs are different then output is 1.
-5. Design a NOT gate logic if input is 0 then output is 1.
-6. Design a half adder and half subtractor using the rules.
-7. Test the logic.
-8. Stop the program.
+1. Start the program.
+2. Write the rules for each diseases.
+3. If patient have mumps then symptoms are fever and swollen glands.
+4. If patient have cough, sneeze and running nose then disease is measles.
+5. if patient have symptoms headache ,sneezing ,sore_throat, runny_nose and  chills then disease is common cold.
+6. Define rules for all disease.
+7. Call the predicates and Collect the symptoms of Patient and give the hypothesis of disease.
+        
 
 
 
@@ -19,41 +19,46 @@ To write a logic program to design a circuit like half adder and half subtractor
 
 
 
-   
+
 ### Program:
 ```
-xor(0,1,1).
-xor(0,0,0).
-xor(1,0,1).
-xor(1,1,0).
-and(1,1,1).
-and(0,0,0).
-and(0,1,0).
-and(1,0,0).
-not(0,1).
-not(1,0).
-or(0,1,1).
-or(1,0,1).
-or(0,0,0).
-or(1,1,1).
-halfadder(A,B,Sum,Carry):-
-    xor(A,B,Sum),
-    and(A,B,Carry).
-halfsubtractor(A,B,Diff,Carry):-
-    xor(A,B,Diff),
-    not(A,C),
-     and(C,B,Carry).
-fulladder(A,B,Cin,S,Cout):-
-    xor(A,B,X),
-    xor(X,Cin,S),
-    and(X,Cin,Y),
-    and(A,B,Z),
-    or(Y,Z,Cout).
+hypothesis(Patient,german_measles) :-
+symptom(Patient,fever),
+symptom(Patient,headache),
+symptom(Patient,runny_nose),
+symptom(Patient,rash).
+hypothesis(Patient,flu) :-
+symptom(Patient,fever),
+symptom(Patient,headache),
+symptom(Patient,body_ache),
+symptom(Patient,conjunctivitis),
+symptom(Patient,chills),
+symptom(Patient,sore_throat),
+symptom(Patient,runny_nose),
+symptom(Patient,cough).
+hypothesis(Patient,common_cold) :-
+symptom(Patient,headache),
+symptom(Patient,sneezing),
+symptom(Patient,sore_throat).
+hypothesis(Patient,chicken_pox) :-
+symptom(Patient,fever),
+symptom(Patient,chills),
+symptom(Patient,body_ache),
+symptom(Patient,rash).
+hypothesis(Patient,measles) :-
+symptom(Patient,cough),
+symptom(Patient,sneezing),
+symptom(Patient,runny_nose).
+symptom(raju,headache).
+symptom(raju,sneezing).
+symptom(raju,sore_throat).
 ```
+
 ### Output:
-<img width="967" height="312" alt="image" src="https://github.com/user-attachments/assets/24aed134-b8c1-4400-81e8-a34a5e8131b2" />
-<img width="975" height="289" alt="image" src="https://github.com/user-attachments/assets/10f3c9d0-4b25-4b8c-8606-3a3ec2243521" />
-<img width="961" height="319" alt="image" src="https://github.com/user-attachments/assets/f2e55d29-527c-4d48-9608-ca80f4602b1e" />
+<img width="386" height="241" alt="image" src="https://github.com/user-attachments/assets/b51c3381-689f-4b2c-ac2e-33a41997a5be" />
+
+
+
 
 ### Result:
-Thus the truth table of circuit verified sucessfully.
+Thus the simple medical diagnosis system was built sucessfully.
